@@ -1,10 +1,10 @@
 {
   "name": "poc-async-img-resize",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Async infra for image resizer service",
+  "author": "Exos <oscar@gentisoft.com>",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "WTFPL",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
