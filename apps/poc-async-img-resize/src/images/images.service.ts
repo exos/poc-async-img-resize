@@ -34,7 +34,7 @@ export class ImagesService {
                 name: createImageDto.name,
                 sizes: this._sizesService.availableSizeKeys.map((size) => ({
                     size,
-                    proccessed: false,
+                    processed: false,
                     url: null,
                 })),
             });
@@ -90,7 +90,7 @@ export class ImagesService {
                 size,
             },
             {
-                proccessed: true,
+                processed: true,
                 url,
             },
         );

@@ -18,7 +18,7 @@ interface RequiredOptions
 export class RedisEventsService implements OnModuleInit {
     private readonly _options: RequiredOptions;
     private readonly _logger: Logger = new Logger(RedisEventsService.name);
-    private __stoped: boolean = false;
+    private __stopped: boolean = false;
 
     private _client?: IORedis;
 
@@ -94,7 +94,7 @@ export class RedisEventsService implements OnModuleInit {
 
         if (!eventPayload || !eventPayload.pattern) {
             this._logger.error(
-                '[INVALID PAYLOAD] Received invalid event payloadu',
+                '[INVALID PAYLOAD] Received invalid event payload',
                 eventPayload,
             );
             return;
@@ -111,7 +111,7 @@ export class RedisEventsService implements OnModuleInit {
 
         this._logger.log('[LOOP] Starting Redis event listening loop...');
 
-        while (!this.__stoped) {
+        while (!this.__stopped) {
             const res = await this._client.brpop(this._options.channel, 0);
 
             if (res && res.length === 2) {

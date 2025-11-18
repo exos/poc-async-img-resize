@@ -16,7 +16,7 @@ export class ImageSize {
     size: string;
 
     @Column()
-    proccessed: boolean;
+    processed: boolean;
 
     @Column({ type: 'varchar', length: 1024, nullable: true })
     url: string | null;

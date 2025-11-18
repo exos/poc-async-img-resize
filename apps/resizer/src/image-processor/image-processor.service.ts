@@ -3,8 +3,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import sharp from 'sharp';
 
 @Injectable()
-export class ImageProcesorService {
-    private readonly _logger: Logger = new Logger(ImageProcesorService.name);
+export class ImageProcessorService {
+    private readonly _logger: Logger = new Logger(ImageProcessorService.name);
 
     constructor() {}
 

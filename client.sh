@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 API_URL="http://localhost:4000"
 
@@ -28,13 +28,13 @@ upload() {
 
     echo "Uploading image with id $IMAGE_ID"
 
-    # 2. Extrae el host del presigned URL
+    # 2. Extrae el host del pre-signed URL
     local UPLOAD_HOST=$(echo "$UPLOAD_URL" | sed -E 's|https?://([^/]+).*|\1|')
 
-    local TRANS_RUL=$(echo "$UPLOAD_URL" | sed -E 's/minio:9000/localhost:9000/')
+    local TRANS_URL=$(echo "$UPLOAD_URL" | sed -E 's/minio:9000/localhost:9000/')
 
     # 3. Hace el PUT con el host correcto
-    curl -X PUT "$TRANS_RUL" \
+    curl -X PUT "$TRANS_URL" \
         --header "Host: $UPLOAD_HOST" \
         --header "Content-Type: application/octet-stream" \
         --upload-file "$FILE_PATH"

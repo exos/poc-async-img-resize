@@ -43,7 +43,7 @@ export class MinioService implements OnModuleInit {
             accessKey: this._options.accessKey,
             secretKey: this._options.secretKey,
         });
-        this._logger.log('Conenct with', {
+        this._logger.log('Connect with', {
             endPoint: this._options.endPoint,
             port: this._options.port,
             useSSL: this._options.useSSL,

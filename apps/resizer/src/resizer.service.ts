@@ -3,7 +3,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { SizesService } from '@lib/sizes';
 import queue from 'async/queue';
 import { MinioService } from '@lib/minio';
-import { ImageProcesorService } from './image-procesor/image-procesor.service';
+import { ImageProcessorService } from './image-processor/image-processor.service';
 import { ImageProcessorItemDto } from './dto/image-processor-item.dto';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class ResizerService {
 
     constructor(
         private readonly _sizesService: SizesService,
-        private readonly _imageProcesorService: ImageProcesorService,
+        private readonly _imageProcessorService: ImageProcessorService,
         private readonly _minioService: MinioService,
     ) {
         this._queue = queue(
@@ -60,7 +60,7 @@ export class ResizerService {
         });
         const sizeDef = this._sizesService.sizes[size];
 
-        const resizedImageStream = this._imageProcesorService.resizeImage(
+        const resizedImageStream = this._imageProcessorService.resizeImage(
             obj,
             sizeDef.width,
             sizeDef.height,

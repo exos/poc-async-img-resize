@@ -10,7 +10,7 @@ export class MinioDeserializer {
         }
 
         if (!Array.isArray(raw)) {
-            throw new Error('Unknow format');
+            throw new Error('Unknown format');
         }
 
         if (raw.length !== 1) {
@@ -18,7 +18,7 @@ export class MinioDeserializer {
         }
 
         if (!('Event' in raw[0])) {
-            throw new Error('Invalid event format: missing EventName');
+            throw new Error('Invalid event format: missing Event');
         }
 
         if (!Array.isArray(raw[0].Event)) {

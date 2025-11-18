@@ -7,7 +7,7 @@ import { SizesModule } from '@lib/sizes';
 import { deserialize } from '@lib/minio-events-serializer';
 import { ResizerController } from './resizer.controller';
 import { ResizerService } from './resizer.service';
-import { ImageProcesorModule } from './image-procesor/image-procesor.module';
+import { ImageProcessorModule } from './image-processor/image-processor.module';
 
 @Module({
     imports: [
@@ -33,7 +33,7 @@ import { ImageProcesorModule } from './image-procesor/image-procesor.module';
                 secretKey: configService.get<string>('RESIZE_MINIO_PASSWORD')!,
             }),
         }),
-        ImageProcesorModule,
+        ImageProcessorModule,
     ],
     controllers: [ResizerController],
     providers: [ResizerService],
