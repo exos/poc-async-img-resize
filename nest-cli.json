@@ -1,0 +1,83 @@
+{
+  "monorepo": true,
+  "root": "apps/poc-async-img-resize",
+  "sourceRoot": "apps/poc-async-img-resize/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/poc-async-img-resize/tsconfig.app.json"
+  },
+  "projects": {
+    "config-tree": {
+      "type": "library",
+      "root": "libs/config-tree",
+      "entryFile": "index",
+      "sourceRoot": "libs/config-tree/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/config-tree/tsconfig.lib.json"
+      }
+    },
+    "config-validate": {
+      "type": "library",
+      "root": "libs/config-validate",
+      "entryFile": "index",
+      "sourceRoot": "libs/config-validate/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/config-validate/tsconfig.lib.json"
+      }
+    },
+    "minio": {
+      "type": "library",
+      "root": "libs/minio",
+      "entryFile": "index",
+      "sourceRoot": "libs/minio/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/minio/tsconfig.lib.json"
+      }
+    },
+    "minio-events-serializer": {
+      "type": "library",
+      "root": "libs/minio-events-serializer",
+      "entryFile": "index",
+      "sourceRoot": "libs/minio-events-serializer/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/minio-events-serializer/tsconfig.lib.json"
+      }
+    },
+    "poc-async-img-resize": {
+      "type": "application",
+      "root": "apps/poc-async-img-resize",
+      "entryFile": "main",
+      "sourceRoot": "apps/poc-async-img-resize/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/poc-async-img-resize/tsconfig.app.json"
+      }
+    },
+    "redis-events": {
+      "type": "library",
+      "root": "libs/redis-events",
+      "entryFile": "index",
+      "sourceRoot": "libs/redis-events/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/redis-events/tsconfig.lib.json"
+      }
+    },
+    "resizer": {
+      "type": "application",
+      "root": "apps/resizer",
+      "entryFile": "main",
+      "sourceRoot": "apps/resizer/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/resizer/tsconfig.app.json"
+      }
+    },
+    "sizes": {
+      "type": "library",
+      "root": "libs/sizes",
+      "entryFile": "index",
+      "sourceRoot": "libs/sizes/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/sizes/tsconfig.lib.json"
+      }
+    }
+  }
+}

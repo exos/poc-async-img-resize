@@ -1,0 +1,85 @@
+services:
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "56379:6379"
+    command: ["redis-server", "--appendonly", "no"]
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"   # API
+      - "9001:9001"   # consola web
+    env_file:
+      - compose/config/all.env
+      - compose/config/minio.env
+    volumes:
+      - minio-data:/data
+    depends_on:
+      - redis
+
+  minio-init:
+    build:
+      context: compose/mc
+    container_name: minio-init
+    env_file:
+      - compose/config/all.env
+      - compose/config/resizer.env
+      - compose/config/minio.env
+      - compose/config/api-minio.env
+    depends_on:
+      - minio
+
+  db:
+    image: mariadb:latest
+    container_name: db
+    env_file:
+      - compose/config/db.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+  api:
+    build:
+      context: compose/node
+      args:
+        SERVICE: poc-async-img-resize
+    env_file:
+      - compose/config/all.env
+      - compose/config/sizes.env
+      - compose/config/db.env
+      - compose/config/api-minio.env
+      - compose/config/api.env
+    volumes:
+      - .:/app
+    ports:
+      - 4000:4000
+    depends_on:
+      - minio
+      - db
+      - redis
+
+  resizer:
+    build:
+      context: compose/node
+      args:
+        SERVICE: resizer
+    env_file:
+      - compose/config/all.env
+      - compose/config/sizes.env
+      - compose/config/resizer.env
+    volumes:
+      - .:/app
+    depends_on:
+      - minio
+      - db
+      - redis
+
+volumes:
+  minio-data:
+  db-data:
