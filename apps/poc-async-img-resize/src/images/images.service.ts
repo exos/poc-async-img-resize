@@ -48,6 +48,8 @@ export class ImagesService {
                 24 * 3600, // 24 hours
             );
 
+            this._logger.log(`Created upload URL for image ${image.id}: ${url}`);
+
             return {
                 image,
                 uploadUrl: url,
@@ -80,6 +82,7 @@ export class ImagesService {
         const url = surl
             .replace(/\?.*$/, '')
             .replace('minio:9000', 'localhost:9000');
+
         this._logger.log(
             `Image resized: ${key}, url: ${url}, saving as processed`,
         );
