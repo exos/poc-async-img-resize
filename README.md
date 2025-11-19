@@ -8,16 +8,7 @@
 This is a PoC _(Proof of Concept)_ to learn about async infra implementations; in this case it's an
 API to upload images and get them in different sizes.
 
-```mermaid
-graph TD
-    U((consumer)) <--> A[API]
-    U --> M{{"Minio\nObject storage"}}
-    A <--> DB[(MariaDB)]
-    B[/"Redis\n(as event broker)"/] -.-> A
-    B -.-> R[Resizer]
-    R --> M
-    M -.-> B
-```
+![schema](media/esquema.png)
 
 ## Getting Started 🚀
 
